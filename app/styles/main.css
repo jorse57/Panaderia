@@ -1,0 +1,149 @@
+.browsehappy {
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
+}
+
+body {
+  padding: 0;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 10px;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+  padding-bottom: 19px;
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  font-size: 21px;
+  padding: 14px 24px;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.login {
+  width: 400px;
+}
+
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+
+.sidebar {
+  left: 0px;
+  width: 200px;
+  height: 100%;
+  position: absolute;
+}
+
+.content {
+  right: 0;
+  left: 225px;  
+  position: absolute;
+  width: 83%;
+  height: 100%;
+}
+
+/* .topnav {
+  height: 50px;
+} */
+
+.topnav {
+  background-color: #f2f2f2;
+  height: 70px;
+  font-size: 14px;
+  border-bottom: 3px solid #222;
+}
+
+.menu{
+  background-color: #f2f2f2;
+}
+
+.menu .menu-item{
+  margin-top: 20px;
+  text-align: center;
+}
+
+.boton-menu {
+  padding: 10px 20px;
+  cursor: pointer;
+  
+}
+
+.boton-menu:hover {
+  /* border: 1px solid white; */
+  background-color: white;
+  border-radius: 20px;
+}
+
+.content-main {
+  margin: 15px
+}
+
+/* .info-userlogged .user-name .user-type */

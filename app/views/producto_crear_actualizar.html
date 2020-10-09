@@ -1,0 +1,59 @@
+crear actualizar
+
+<form ng-submit="productoCrAcVm.guardar()">
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput1">Nombre</label>
+    <input type="text" class="form-control" ng-model="productoCrAcVm.producto.nombre">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput1">Existencias</label>
+    <input type="number" class="form-control" ng-disabled="productoCrAcVm.producto.id" ng-model="productoCrAcVm.producto.existencias">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput1">Precio de venta</label>
+    <input type="number" class="form-control" ng-model="productoCrAcVm.producto.precioVenta">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlSelect1">Tipo de producto</label>
+    <select class="form-control" id="exampleFormControlSelect1" ng-model="productoCrAcVm.producto.tipoProducto">
+      <option ng-selected="productoCrAcVm.producto.tipoProducto == 1" value="1">Tipo 1</option>
+      <option ng-selected="productoCrAcVm.producto.tipoProducto == 2" value="2">Tipo 2</option>
+      <option ng-selected="productoCrAcVm.producto.tipoProducto == 3" value="3">Tipo 3</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlSelect1">Estado</label>
+    <select class="form-control" id="exampleFormControlSelect1" ng-model="productoCrAcVm.producto.estado">
+      <option ng-selected="productoCrAcVm.producto.estado == 0" value="0">Inactivo</option>
+      <option ng-selected="productoCrAcVm.producto.estado == 1" value="1">Activo</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlSelect1">Unidad de medida</label>
+    <select class="form-control" id="exampleFormControlSelect1" ng-model="productoCrAcVm.producto.unidadMedida">
+      <option ng-selected="productoCrAcVm.producto.unidadMedida == 0" value="0">unidad 1</option>
+      <option ng-selected="productoCrAcVm.producto.unidadMedida == 1" value="1">unidad 2</option>
+    </select>
+  </div>
+  
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput1">Stock minimo</label>
+    <input type="number" class="form-control" ng-model="productoCrAcVm.producto.stockMin">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlInput1">Stock maximo</label>
+    <input type="number" class="form-control" ng-model="productoCrAcVm.producto.stockMax">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="datetimepicker1">Fecha de caducidad</label>
+    <div class='input-group col-md-12' id='datetimepicker1'>
+      <input type='date' class="form-control" ng-model="productoCrAcVm.producto.fechaCaducidad" />
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+  </div>
+</form>

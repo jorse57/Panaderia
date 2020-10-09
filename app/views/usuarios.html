@@ -1,0 +1,31 @@
+<h3>Usuarios</h3>
+<button class="btn btn-primary" ui-sref="auth.CrearActualizarUsuarios">Agregar nuevo</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Rol</th>
+      <th scope="col">Teléfono</th>
+      <th scope="col">Estado</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="usuario in usuariosVm.usuarios">
+      <th scope="row">{{usuario.id}}</th>
+      <td>{{usuario.nombre}}</td>
+      <td>
+        <span ng-if="usuario.rol == 1">Administrador</span>
+        <span ng-if="usuario.rol == 2">Empleado</span>
+        <span ng-if="usuario.rol == 3">Cliente</span>
+      </td>
+      <td>{{usuario.telefono}}</td>
+      <td>
+        <span ng-if="usuario.estado == 0">Inactivo</span>
+        <span ng-if="usuario.estado == 1">Activo</span>
+      </td>
+      <td> <a href="" ui-sref="auth.CrearActualizarUsuarios({id: usuario.id})">editar</a> </td>
+    </tr>
+  </tbody>
+</table>

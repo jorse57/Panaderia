@@ -1,0 +1,41 @@
+<div class="info-userlogged col-md-2">
+  <span class="user-name">{{HomeVm.user.nombre}}</span>
+  <br>
+  <span class="user-type" ng-if="HomeVm.user.rol == 1">Administrador</span>
+  <span class="user-type" ng-if="HomeVm.user.rol == 2">Empleado</span>
+  <span class="user-type" ng-if="HomeVm.user.rol == 3">Cliente</span>
+  <br>
+  <a href="" ng-click="HomeVm.cerrarSesion()">Cerrar sesión</a>
+</div>
+<div class="menu col-md-10">
+  <div class="col-md-2 menu-item">
+    <span class="boton-menu" ui-sref="auth.home">
+      Inicio
+    </span>
+  </div>
+  <div class="col-md-2 menu-item">
+    <span class="boton-menu" ui-sref="auth.usuarios">
+      Usuarios
+    </span>
+  </div>
+  <div class="col-md-2 menu-item">
+    <span class="boton-menu" ui-sref="auth.productos">
+      Productos
+    </span>
+  </div>
+  <div class="col-md-2 menu-item">
+    <span class="boton-menu">
+      Compras
+    </span>
+  </div>
+  <div class="col-md-2 menu-item">
+    <span class="boton-menu">
+      Ventas
+    </span>
+  </div>
+  <div class="col-md-2 menu-item">
+    <span class="boton-menu">
+      Producción
+    </span>
+  </div>
+</div>
