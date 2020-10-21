@@ -2,24 +2,24 @@ crear actualizar
 
 <form name="usuarioForm" ng-submit="usuarioCrAcVm.guardar()">
   <div class="form-group col-md-6">
-    <label for="exampleFormControlInput1">Nombre</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" ng-minlength="4" ng-model="usuarioCrAcVm.usuario.nombre" required>
+    <label for="nombre">Nombre</label>
+    <input type="text" class="form-control" id="nombre" ng-minlength="4" ng-model="usuarioCrAcVm.usuario.nombre" required>
   </div>
   <div class="form-group col-md-6">
-    <label for="exampleFormControlInput1">Identificación</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="usuarioCrAcVm.usuario.identificacion">
+    <label for="id">Identificación</label>
+    <input type="text" class="form-control" id="id" ng-model="usuarioCrAcVm.usuario.identificacion">
   </div>
   <div class="form-group col-md-6">
-    <label for="exampleFormControlInput1">Correo</label>
-    <input type="email" class="form-control" id="exampleFormControlInput1" ng-model="usuarioCrAcVm.usuario.correo">
+    <label for="correo">Correo</label>
+    <input type="email" class="form-control" id="correo" ng-model="usuarioCrAcVm.usuario.correo">
   </div>
   <div class="form-group col-md-6">
-    <label for="exampleFormControlInput1">Teléfono</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="usuarioCrAcVm.usuario.telefono">
+    <label for="telefono">Teléfono</label>
+    <input type="text" class="form-control" id="telefono" ng-model="usuarioCrAcVm.usuario.telefono">
   </div>
   <div class="form-group col-md-6">
-    <label for="exampleFormControlInput1">Dirección</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="usuarioCrAcVm.usuario.direccion">
+    <label for="dir">Dirección</label>
+    <input type="text" class="form-control" id="dir" ng-model="usuarioCrAcVm.usuario.direccion">
   </div>
   <div class="form-group col-md-6">
     <label for="exampleFormControlSelect1">Rol</label>
@@ -37,8 +37,12 @@ crear actualizar
     </select>
   </div>
   <div class="form-group col-md-6" ng-if="!usuarioCrAcVm.usuario.id">
-    <label for="exampleFormControlSelect1">Contraseña</label>
+    <label for="pass">Contraseña</label>
     <input type="password" class="form-control" id="exampleFormControlInput1" ng-model="usuarioCrAcVm.usuario.contrasena">
+  </div>
+
+  <div class="form-group col-md-12 center" ng-if="usuarioCrAcVm.error">
+    <label style="color: red">{{usuarioCrAcVm.message}} </label>
   </div>
 
   <div class="col-md-12">

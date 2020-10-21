@@ -40,11 +40,14 @@
         $state.go("auth.home");
       } else {
         vm.error = true;
+        vm.message = result.message;
       }
     }
 
-    function errorLogin() {
+    function errorLogin(error) {
       vm.error = true;
+      console.log("------->",error);
+      
     }
 
     function successForward(result) {

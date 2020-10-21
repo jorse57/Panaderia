@@ -64,6 +64,11 @@
         templateUrl: 'views/usuarios_crear_actualizar.html',
         controller: 'usuarioCrAcCtrl as usuarioCrAcVm'
       })
+      .state('auth.CambiarpassUsuario', {
+        url: '/usuario-cambiar-pass/:id',
+        templateUrl: 'views/usuarios_cambiar_contrasena.html',
+        controller: 'cambiarPassCtrl as usuarioPassVm'
+      })
 
       .state('auth.productos', {
         url: '/productos:page',

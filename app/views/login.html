@@ -9,15 +9,16 @@
       </div>
       <div class="form-group" ng-if="!loginVm.viewForward">
         <label for="exampleInputPassword1">Contraseña</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="loginVm.contrasena" required >
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="loginVm.contrasena" required min="6">
       </div>
       <div class="form-group" ng-if="loginVm.error">
-        <label style="color: red">Usuarios o contraseña no existe </label>
+        <label style="color: red">{{loginVm.message}} </label>
       </div>
       <div class="form-group" ng-if="loginVm.msg">
         <label style="color: green">{{loginVm.msg}}</label>
       </div>
-      <button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-primary">Enviar</button>  
+      <button type="submit" ng-disabled="loginForm.$invalid " class="btn btn-primary">Enviar</button>  
+      <!-- || loginVm.contrasena.length < 6 -->
       <br>
       <a ng-click="loginVm.viewForward = !loginVm.viewForward"> {{loginVm.viewForward ? 'Volver al login' : 'Recuperar contraseña' }} </a>
     </form>

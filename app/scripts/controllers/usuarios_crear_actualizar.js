@@ -62,7 +62,12 @@
     }
 
     function _successGuardarUsuario(result) {
-      $state.go('auth.usuarios')
+      if (result.status) {
+        $state.go('auth.usuarios');
+      }else{
+        vm.error = true;
+        vm.message = result.message;
+      }
     }
 
     function _actualizarUsuario() {
