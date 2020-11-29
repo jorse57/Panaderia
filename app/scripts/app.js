@@ -20,22 +20,6 @@ angular
     'ngTouch',
     'ui.router'
   ]);
-// .config(function ($routeProvider) {
-//   $routeProvider
-//     .when('/signin', {
-//       templateUrl: 'views/signin.html',
-//       controller: 'SigninCtrl',
-//       controllerAs: 'sig'
-//     })
-//     .when('/', {
-//       templateUrl: 'views/main.html',
-//       controller: 'MainCtrl',
-//       controllerAs: 'main'
-//     })
-//     .otherwise({
-//       redirectTo: '/'
-//     });
-// });
 
 angular
   .module('proyectoFrontApp')
