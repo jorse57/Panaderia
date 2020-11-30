@@ -1,0 +1,41 @@
+crear venta
+
+<form name="ventaForm" ng-submit="ventaCrVm.guardarVenta()">
+  <div class="form-group col-md-6">
+    <label for="nombre">Fecha venta</label>
+    <input type="date" class="form-control" id="nombre"  ng-model="ventaCrVm.venta.fechaVenta" required>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="exampleFormControlSelect1"> producto</label>
+    <select class="form-control" id="exampleFormControlSelect1" ng-model="ventaCrVm.venta.idProducto">
+      <option ng-selected="ventaCrVm.venta.rol == 1" value="1">leche</option>
+      <option ng-selected="ventaCrVm.venta.rol == 2" value="2">azucar</option>
+      <option ng-selected="ventaCrVm.venta.rol == 3" value="3">ron</option>
+    </select>
+  </div>
+  <div class="form-group col-md-6">
+    <label for="cantidad">Cantidad</label>
+    <input type="number" class="form-control" id="correo" ng-model="ventaCrVm.venta.cantidad">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="costo">precio</label>
+    <input type="number" class="form-control" id="telefono" ng-model="ventaCrVm.venta.precio">
+  </div>
+
+  <div class="form-group col-md-6">
+    <label for="recibo">Cliente</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="ventaCrVm.venta.idCliente">
+  </div>
+  <div class="form-group col-md-6">
+    <label for="venta">Usuario</label>
+    <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="ventaCrVm.venta.idUsuario">
+  </div>
+
+  <div class="form-group col-md-12 center" ng-if="ventaCrVm.error">
+    <label style="color: red">{{ventaCrVm.message}} </label>
+  </div>
+
+  <div class="col-md-12">
+    <button type="submit" ng-disabled="ventaForm.$invalid" class="btn btn-primary btn-block">Guardar</button>
+  </div>
+</form>

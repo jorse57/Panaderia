@@ -1,0 +1,22 @@
+<h3>Ventas</h3>
+<button class="btn btn-primary" ui-sref="auth.ventasCrear">Agregar nueva venta</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">fecha venta</th>
+      <th scope="col">Cantidad Productos</th>
+      <th scope="col">Precio</th>
+      <th scope="col">cliente</th>
+      <th scope="col">usuario</th>
+      <th></th>
+    </tr>
+  <tbody>
+    <tr ng-repeat="venta in ventaVm.ventas">
+      <th scope="row">{{venta.id}}</th>
+      <td>{{venta.fechaVenta}}</td>
+      <td>{{venta.cantidad}}</td>
+      <td>{{venta.precio}}</td>
+    </tr>
+  </tbody>
+  </thead>

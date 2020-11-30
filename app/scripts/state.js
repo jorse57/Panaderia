@@ -81,6 +81,27 @@
         templateUrl: 'views/producto_crear_actualizar.html',
         controller: 'ProductoCrAcCtrl as productoCrAcVm'
       })
+      .state('auth.Compras', {
+        url: '/compras',
+        templateUrl: 'views/compras.html',
+        controller: 'comprasCtrl as compraVm'
+      })
+      .state('auth.comprasCrear', {
+        url: '/compras/crear',
+        templateUrl: 'views/compra_crear.html',
+        controller: 'compraCrCtrl as compraCrVm'
+      })
+
+      .state('auth.Ventas', {
+        url: '/ventas',
+        templateUrl: 'views/ventas.html',
+        controller: 'ventasCtrl as ventaVm'
+      })
+      .state('auth.ventasCrear', {
+        url: '/ventas/crear',
+        templateUrl: 'views/venta_crear_editar.html',
+        controller: 'ventaCrCtrl as ventaCrVm'
+      })
 
       
 

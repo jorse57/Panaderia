@@ -1,1 +1,27 @@
-Compras 
+<h3>Compras</h3>
+<button class="btn btn-primary" ui-sref="auth.comprasCrear">Agregar nueva compra</button>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nit</th>
+      <th scope="col">Nombre Proveedor</th>
+      <th scope="col">Cantidad</th>
+      <th scope="col">Costo</th>
+      <th scope="col">numero recibo</th>
+      <th scope="col">Fecha compra</th>
+      <th></th>
+    </tr>
+  <tbody>
+    <tr ng-repeat="compra in compraVm.compras">
+      <th scope="row">{{compra.id}}</th>
+      <td>{{compra.nitProveedor}}</td>
+      <td>{{compra.nombreProveedor}}</td>
+      <td>{{compra.cantidad}}</td>
+      <td>{{compra.costo}}</td>
+      <td>{{compra.numeroRecibo}}</td>
+      <td>{{compra.fechaCompra}}</td>
+
+    </tr>
+  </tbody>
+  </thead>
