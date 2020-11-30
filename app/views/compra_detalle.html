@@ -1,0 +1,39 @@
+<h3>Detalle de la compra</h3>
+Número de recibo: <strong>{{compraDetVm.infoCompra.numeroRecibo}}</strong>
+<br>
+Nit proveedor: <strong>{{compraDetVm.infoCompra.nitProveedor}}</strong>
+<br>
+Nombre del proveedor: <strong>{{compraDetVm.infoCompra.nombreProveedor}}</strong>
+<br>
+Fecha compra: <strong>{{compraDetVm.infoCompra.fechaCompra | date:'dd/MM/yyyy hh:mm' }}</strong>
+<br>
+Fecha entrega: <strong>{{compraDetVm.infoCompra.fechaEntregaP | date:'dd/MM/yyyy hh:mm' }}</strong>
+<br>
+Total Compra: <strong>{{compraDetVm.infoCompra.totalCompra }}</strong>
+<br>
+
+<div class="col-md-12" ng-if="compraDetVm.compra.length">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>cod prod</th>
+        <th>nombre</th>
+        <th>cantidad</th>
+        <th>costos</th>
+        <th>valor</th>
+        <th>total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="prod in compraDetVm.compra">
+        <td> {{prod.idProd}} </td>
+        <td> {{prod.nombreProd}} </td>
+        <td> {{prod.cantidad}} </td>
+        <td> {{prod.costo}} </td>
+        <td> {{prod.valor}} </td>
+        <td> {{prod.cantidad * prod.costo }} </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

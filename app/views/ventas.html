@@ -14,7 +14,7 @@
   <tbody>
     <tr ng-repeat="venta in ventaVm.ventas">
       <th scope="row">{{venta.id}}</th>
-      <td>{{venta.fechaVenta}}</td>
+      <td>{{venta.fechaVenta | date:'dd/MM/yyyy hh:mm' }}</td>
       <td>{{venta.cantidad}}</td>
       <td>{{venta.precio}}</td>
     </tr>

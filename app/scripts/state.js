@@ -92,6 +92,12 @@
         controller: 'compraCrCtrl as compraCrVm'
       })
 
+      .state('auth.comprasDetalle', {
+        url: '/compras/detalle/:recibo',
+        templateUrl: 'views/compra_detalle.html',
+        controller: 'compraDetaCtrl as compraDetVm'
+      })
+
       .state('auth.Ventas', {
         url: '/ventas',
         templateUrl: 'views/ventas.html',

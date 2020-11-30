@@ -1,4 +1,4 @@
-<div class="info-userlogged col-md-2">
+<div class="info-userlogged col-md-2 col-xs-3">
   <span class="user-name">{{HomeVm.user.nombre}}</span>
   <br>
   <span class="user-type" ng-if="HomeVm.user.rol == 1">Administrador</span>
@@ -7,35 +7,35 @@
   <br>
   <a href="" ng-click="HomeVm.cerrarSesion()">Cerrar sesión</a>
 </div>
-<div class="menu col-md-10">
-  <div class="col-md-2 menu-item">
+<div class="menu col-md-10 col-xs-9">
+  <div class="col-md-2 col-xs-2 menu-item">
     <span class="boton-menu" ui-sref="auth.home">
       Inicio
     </span>
   </div>
-  <div class="col-md-2 menu-item">
+  <div class="col-md-2 col-xs-2 menu-item">
     <span class="boton-menu" ui-sref="auth.usuarios">
       Usuarios
     </span>
   </div>
-  <div class="col-md-2 menu-item">
+  <div class="col-md-2 col-xs-2 menu-item">
     <span class="boton-menu" ui-sref="auth.productos">
       Productos
     </span>
   </div>
-  <div class="col-md-2 menu-item">
+  <div class="col-md-2 col-xs-2 menu-item">
     <span class="boton-menu" ui-sref="auth.Compras">
       Compras
     </span>
   </div>
-  <div class="col-md-2 menu-item">
+  <div class="col-md-2 col-xs-2 menu-item">
     <span class="boton-menu" ui-sref="auth.Ventas">
       Ventas
     </span>
   </div>
-  <div class="col-md-2 menu-item">
+  <!-- <div class="col-md-2 col-xs-2 menu-item">
     <span class="boton-menu">
       Producción
     </span>
-  </div>
+  </div> -->
 </div>

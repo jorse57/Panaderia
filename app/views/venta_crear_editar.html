@@ -7,7 +7,7 @@ crear venta
   </div>
   <div class="form-group col-md-6">
     <label for="exampleFormControlSelect1"> producto</label>
-    <select class="form-control" id="exampleFormControlSelect1" ng-model="ventaCrVm.venta.idProducto">
+    <select class="form-control" id="exampleFormControlSelect1" ng-model="ventaCrVm.venta.idProducto" (change)="onChange($event)">
       <option ng-selected="ventaCrVm.venta.rol == 1" value="1">leche</option>
       <option ng-selected="ventaCrVm.venta.rol == 2" value="2">azucar</option>
       <option ng-selected="ventaCrVm.venta.rol == 3" value="3">ron</option>

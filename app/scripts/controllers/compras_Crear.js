@@ -18,21 +18,74 @@
   function compraCrCtrl($state, serviceServicio) {
     var vm = this;
     vm.compra = {}
-    vm.id = $state.params.id
+    vm.resBusProd = {};
+    vm.addProd = {};
+    vm.productos = [];
+    vm.id = $state.params.id;
+    vm.fechaCompra = new Date()
 
     vm.guardarCompra = guardarCompra;
+    vm.busquedaProd = busquedaProd;
+    vm.agreProTemp = agreProTemp;
+    vm.ediProTemp = ediProTemp;
 
     function guardarCompra() {
+      vm.productos
+      for (let i = 0; i < vm.productos.length; i++) {
+        const prod = vm.productos[i];
+        let compra = {
+          nitProveedor: vm.nitProveedor,
+          nombreProveedor: vm.nombreProveedor,
+          idProducto: prod.id,
+          cantidad: prod.cantidad,
+          costo: prod.costo,
+          valor: prod.valor,
+          numeroRecibo: vm.numeroRecibo,
+          fechaCompra: vm.fechaCompra,
+          fechaEntregaP: vm.fechaEntregaP,
+        }
+        _guardarCompra(compra)
+      }
+      $state.go('auth.Compras');
+    }
+
+    function busquedaProd() {
+      if (vm.codBusqueda) {
+        serviceServicio.llamarMetodo('GET', '/producto/searchIdOrName/' + vm.codBusqueda)
+          .then(_successBusquedaProd)
+      }
+    }
+
+    function agreProTemp (){
+      vm.addProd.id = vm.resBusProd.data.id;
+      vm.addProd.nombre = vm.resBusProd.data.nombre;
+      if(vm.indexEdit) {
+        vm.productos[vm.indexEdit - 1] = vm.addProd;
+      } else {
+        vm.productos.push(vm.addProd)
+      }
+      vm.addProd = {};
+      vm.resBusProd = {};
+    }
+
+    function ediProTemp(index, prod) {
+      vm.codBusqueda = prod.id;
+      busquedaProd();
+      vm.editProd = prod;
+      vm.indexEdit = index + 1;
+    }
+
+    function _guardarCompra(compra) {
       var params = {
-        nitProveedor: vm.compra.nitProveedor,
-        nombreProveedor: vm.compra.nombreProveedor,
-        idProducto: vm.compra.idProducto,
-        cantidad: vm.compra.cantidad,
-        costo: vm.compra.costo,
-        valor: vm.compra.valor,
-        numeroRecibo: vm.compra.numeroRecibo,
-        fechaCompra: vm.compra.fechaCompra.getTime(),
-        fechaEntregaP: vm.compra.fechaEntregaP.getTime()
+        nitProveedor: compra.nitProveedor,
+        nombreProveedor: compra.nombreProveedor,
+        idProducto: compra.idProducto,
+        cantidad: compra.cantidad,
+        costo: compra.costo,
+        valor: compra.valor,
+        numeroRecibo: compra.numeroRecibo,
+        fechaCompra: compra.fechaCompra.getTime(),
+        fechaEntregaP: compra.fechaEntregaP.getTime()
       };
 
       serviceServicio.llamarMetodo('POST', '/compra', params)
@@ -41,11 +94,24 @@
 
     function _successGuardarCompra(result) {
       if (result.status) {
-        $state.go('auth.Compras');
       } else {
         vm.error = true;
         vm.message = result.message;
       }
+    }
+
+    function _successBusquedaProd(result) {
+      vm.resBusProd = result;
+      if(result.status) {
+        vm.addProd.valor = vm.resBusProd.data.precioVenta
+        vm.codBusqueda = null;    
+      } 
+
+      if (vm.editProd) {
+        vm.addProd.cantidad = vm.editProd.cantidad
+        vm.addProd.costo = vm.editProd.costo
+      }
+      delete vm.editProd;
     }
   }
 })();

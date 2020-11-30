@@ -1,46 +1,101 @@
-crear compra
+<h3 style="text-align: center">Compra de productos</h3>
 
 <form name="compraForm" ng-submit="compraCrVm.guardarCompra()">
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-4">
     <label for="nombre">Nit</label>
-    <input type="text" class="form-control" id="nombre" ng-minlength="4" ng-model="compraCrVm.compra.nitProveedor" required>
+    <input type="text" class="form-control" id="nombre" ng-minlength="4" ng-model="compraCrVm.nitProveedor" required>
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-4">
     <label for="id">nombre proveedor</label>
-    <input type="text" class="form-control" id="id" ng-minlength="4" ng-model="compraCrVm.compra.nombreProveedor">
+    <input type="text" class="form-control" id="id" ng-minlength="4" ng-model="compraCrVm.nombreProveedor">
   </div>
-  <div class="form-group col-md-6">
-    <label for="exampleFormControlSelect1"> producto</label>
-    <select class="form-control" id="exampleFormControlSelect1" ng-model="compraCrVm.compra.idProducto">
-      <option ng-selected="compraCrVm.compra.rol == 1" value="1">leche</option>
-      <option ng-selected="compraCrVm.compra.rol == 2" value="2">azucar</option>
-      <option ng-selected="compraCrVm.compra.rol == 3" value="3">ron</option>
-    </select>
-  </div>
-  <div class="form-group col-md-6">
-    <label for="cantidad">Cantidad</label>
-    <input type="number" class="form-control" id="correo" ng-model="compraCrVm.compra.cantidad">
-  </div>
-  <div class="form-group col-md-6">
-    <label for="costo">costo</label>
-    <input type="number" class="form-control" id="telefono" ng-model="compraCrVm.compra.costo">
-  </div>
-  <div class="form-group col-md-6">
-    <label for="valor">valor</label>
-    <input type="number" class="form-control" id="dir" ng-model="compraCrVm.compra.valor">
-  </div>
- 
-  <div class="form-group col-md-6" >
+  <div class="form-group col-md-4" >
     <label for="recibo">n° recibo</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.compra.numeroRecibo">
+    <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.numeroRecibo">
   </div>
-  <div class="form-group col-md-6" >
+
+  <div class="form-group col-md-4" >
     <label for="compra">fecha compra</label>
-    <input type="date" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.compra.fechaCompra">
+    <input type="date" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.fechaCompra">
   </div>
-  <div class="form-group col-md-6" >
+  <div class="form-group col-md-4" >
     <label for="entrega">fecha entrega</label>
-    <input type="date" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.compra.fechaEntregaP">
+    <input type="date" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.fechaEntregaP">
+  </div>
+
+  <div class="form-group col-md-4">
+    <div class="input-group">
+      <label for="entrega">Buscar producto</label>
+      <input ng-model="compraCrVm.codBusqueda" placeholder="Producto" type="text" class="form-control">
+      <div class="input-group-btn" style="top: 13px;">
+        <button ng-click="compraCrVm.busquedaProd()" class="btn" type="button"> 
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-12" style="height: 350px" >
+    
+    <div class="col-md-12" ng-if="compraCrVm.resBusProd.status">
+      <div class="col-md-12">
+        Codigo del producto: <strong>{{compraCrVm.resBusProd.data.id}}</strong> 
+        Nombre del producto: <strong>{{compraCrVm.resBusProd.data.nombre}}</strong> 
+        Existencias: <strong>{{compraCrVm.resBusProd.data.existencias}}</strong>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" class="form-control" id="correo" ng-model="compraCrVm.addProd.cantidad">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="costo">costo</label>
+        <input type="number" class="form-control" id="telefono" ng-model="compraCrVm.addProd.costo">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="valor">valor</label>
+        <input type="number" class="form-control" id="dir" ng-model="compraCrVm.addProd.valor">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="valor">  Agregar producto</label>
+        <button ng-click="compraCrVm.agreProTemp()" type="button" class="btn btn-primary btn-block"> <i class="glyphicon glyphicon-plus"> </i></button>
+      </div>
+
+    </div>
+
+    <div class="col-md-12" ng-if="compraCrVm.resBusProd.status === false">
+      <label style="color: red">{{compraCrVm.resBusProd.message}}</label>
+    </div>
+    
+    <div class="col-md-12" ng-if="compraCrVm.productos.length" >
+      <table class="table">
+        <thead>
+          <tr>
+            <th>cod</th>
+            <th>nombre</th>
+            <th>cantidad</th>
+            <th>costos</th>
+            <th>valor</th>
+            <th>total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="prod in compraCrVm.productos"> 
+            <td> {{prod.id}} </td>
+            <td> {{prod.nombre}} </td>
+            <td> {{prod.cantidad}} </td>
+            <td> {{prod.costo}} </td>
+            <td> {{prod.valor}} </td>
+            <td> {{prod.cantidad * prod.costo }} </td>
+            <td> <i ng-click="compraCrVm.ediProTemp($index, prod)" class="glyphicon glyphicon-pencil" style="cursor: pointer; color: blue"> </i>  </td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+
   </div>
 
   <div class="form-group col-md-12 center" ng-if="compraCrVm.error">
@@ -48,6 +103,6 @@ crear compra
   </div>
 
   <div class="col-md-12">
-    <button type="submit"  ng-disabled="compraForm.$invalid" class="btn btn-primary btn-block">Guardar</button>
-  </div>
-</form>       
+    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+  </div>  
+</form>

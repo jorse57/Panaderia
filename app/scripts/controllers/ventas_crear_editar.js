@@ -17,7 +17,9 @@
 
   function ventaCrCtrl($state, serviceServicio) {
     var vm = this;
-    vm.venta = {}
+    vm.venta = {
+      fechaVenta: new Date()
+    }
     vm.id = $state.params.id
 
     vm.guardarVenta = guardarVenta;
@@ -42,6 +44,17 @@
       } else {
         vm.error = true;
         vm.message = result.message;
+      }
+    }
+    function onChange ($event) {
+      this.id = ($event == undefined ? '' : $event.id)
+      if (this.id == '') {
+        this.payments = []
+        this.message = ''
+        this.spinnerr = false
+      }
+      else {
+        this.getPaymentsByIdUser(this.id)
       }
     }
   }
