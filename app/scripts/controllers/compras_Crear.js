@@ -23,11 +23,13 @@
     vm.productos = [];
     vm.id = $state.params.id;
     vm.fechaCompra = new Date()
+    vm.fechaEntregaP = new Date()
 
     vm.guardarCompra = guardarCompra;
     vm.busquedaProd = busquedaProd;
     vm.agreProTemp = agreProTemp;
     vm.ediProTemp = ediProTemp;
+    vm.eliminarProd = eliminarProd;
 
     function guardarCompra() {
       vm.productos
@@ -56,10 +58,10 @@
       }
     }
 
-    function agreProTemp (){
+    function agreProTemp() {
       vm.addProd.id = vm.resBusProd.data.id;
       vm.addProd.nombre = vm.resBusProd.data.nombre;
-      if(vm.indexEdit) {
+      if (vm.indexEdit) {
         vm.productos[vm.indexEdit - 1] = vm.addProd;
       } else {
         vm.productos.push(vm.addProd)
@@ -73,6 +75,10 @@
       busquedaProd();
       vm.editProd = prod;
       vm.indexEdit = index + 1;
+    }
+
+    function eliminarProd(index){
+      vm.productos.splice(index, 1)
     }
 
     function _guardarCompra(compra) {
@@ -102,10 +108,10 @@
 
     function _successBusquedaProd(result) {
       vm.resBusProd = result;
-      if(result.status) {
+      if (result.status) {
         vm.addProd.valor = vm.resBusProd.data.precioVenta
-        vm.codBusqueda = null;    
-      } 
+        vm.codBusqueda = null;
+      }
 
       if (vm.editProd) {
         vm.addProd.cantidad = vm.editProd.cantidad

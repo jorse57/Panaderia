@@ -89,7 +89,10 @@
             <td> {{prod.costo}} </td>
             <td> {{prod.valor}} </td>
             <td> {{prod.cantidad * prod.costo }} </td>
-            <td> <i ng-click="compraCrVm.ediProTemp($index, prod)" class="glyphicon glyphicon-pencil" style="cursor: pointer; color: blue"> </i>  </td>
+            <td> <i ng-click="compraCrVm.ediProTemp($index, prod)" class="glyphicon glyphicon-pencil" style="cursor: pointer; color: blue"> </i> <i ng-click="compraCrVm.eliminarProd($index)" class="glyphicon glyphicon-remove" style="cursor: pointer; color: red"> </i>  </td>
+
+            
+
           </tr>
         </tbody>
       </table>

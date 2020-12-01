@@ -108,6 +108,11 @@
         templateUrl: 'views/venta_crear_editar.html',
         controller: 'ventaCrCtrl as ventaCrVm'
       })
+      .state('auth.ventasDetalle', {
+        url: '/ventas/detalle/:numeroRecibo',
+        templateUrl: 'views/ventasDetalle.html',
+        controller: 'ventaDetCtrl as ventaDetVm'
+      })
 
       
 

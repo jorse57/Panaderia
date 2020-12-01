@@ -1,4 +1,101 @@
-crear venta
+<h3 style="text-align: center">Venta de productos</h3>
+
+<form name="ventaForm" ng-submit="ventaCrVm.guardarVenta()">
+  <div class="form-group col-md-4">
+    <label for="nombre">Usuario</label>
+    <input type="text" class="form-control" id="nombre" ng-minlength="4" ng-model="ventaCrVm.idUsuario" required>
+  </div>
+  <div class="form-group col-md-4" >
+    <label for="compra">fecha venta</label>
+    <input type="date" class="form-control" id="exampleFormControlInput1" ng-model="ventaCrVm.fechaVenta">
+  </div>
+
+  <div class="form-group col-md-4">
+    <div class="input-group">
+      <label for="entrega">Buscar producto</label>
+      <input ng-model="ventaCrVm.codBusqueda" placeholder="Producto" type="text" class="form-control">
+      <div class="input-group-btn" style="top: 13px;">
+        <button ng-click="ventaCrVm.busquedaProd()" class="btn" type="button"> 
+          <i class="glyphicon glyphicon-search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="col-md-12" style="height: 350px" >
+    
+    <div class="col-md-12" ng-if="ventaCrVm.resBusProd.status">
+      <div class="col-md-12">
+        Codigo del producto: <strong>{{ventaCrVm.resBusProd.data.id}}</strong> 
+        Nombre del producto: <strong>{{ventaCrVm.resBusProd.data.nombre}}</strong> 
+        Existencias: <strong>{{ventaCrVm.resBusProd.data.existencias}}</strong>
+      </div>
+
+      <div class="form-group col-md-3">
+        <label for="cantidad">Cantidad</label>
+        <input type="number" class="form-control" id="correo" ng-model="ventaCrVm.addProd.cantidad">
+      </div>
+      
+      <div class="form-group col-md-3">
+        <label for="valor">valor unidad</label>
+        <input type="number" class="form-control" id="dir" ng-model="ventaCrVm.addProd.precio">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="valor">  Agregar producto</label>
+        <button ng-click="ventaCrVm.agreProTemp()" type="button" class="btn btn-primary btn-block"> <i class="glyphicon glyphicon-plus"> </i></button>
+      </div>
+
+    </div>
+
+    <div class="col-md-12" ng-if="ventaCrVm.resBusProd.status === false">
+      <label style="color: red">{{ventaCrVm.resBusProd.message}}</label>
+    </div>
+    
+    <div class="col-md-12" ng-if="ventaCrVm.productos.length" >
+      <table class="table">
+        <thead>
+          <tr>
+            <th>cod</th>
+            <th>nombre</th>
+            <th>cantidad</th>
+            <th>precio</th>
+            <th>total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="prod in ventaCrVm.productos"> 
+            <td> {{prod.id}} </td>
+            <td> {{prod.nombre}} </td>
+            <td> {{prod.cantidad}} </td>
+            <td> {{prod.precio}} </td>
+            <td> {{prod.cantidad * prod.precio }} </td>
+            <td> <i ng-click="ventaCrVm.ediProTemp($index, prod)" class="glyphicon glyphicon-pencil" 
+              style="cursor: pointer; color: blue"> </i>  <i ng-click="ventaCrVm.eliminarProd($index)" 
+              class="glyphicon glyphicon-remove" style="cursor: pointer; color: red"></i></td>
+          </tr>
+        </tbody>
+      </table>
+      
+    </div>
+
+  </div>
+
+  <div class="form-group col-md-12 center" ng-if="ventaCrVm.error">
+    <label style="color: red">{{ventaCrVm.message}} </label>
+  </div>
+
+  <div class="col-md-12">
+    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+  </div>  
+</form>
+
+
+
+
+
+<!-- crear venta
 
 <form name="ventaForm" ng-submit="ventaCrVm.guardarVenta()">
   <div class="form-group col-md-6">
@@ -38,4 +135,4 @@ crear venta
   <div class="col-md-12">
     <button type="submit" ng-disabled="ventaForm.$invalid" class="btn btn-primary btn-block">Guardar</button>
   </div>
-</form>
+</form> -->

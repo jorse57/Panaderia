@@ -3,20 +3,17 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">#</th>
-      <th scope="col">fecha venta</th>
-      <th scope="col">Cantidad Productos</th>
-      <th scope="col">Precio</th>
-      <th scope="col">cliente</th>
-      <th scope="col">usuario</th>
+      <th scope="col">numero recibo</th>
+      <th scope="col">fecha/hora venta</th>  
+      <th scope="col">Total</th>
       <th></th>
     </tr>
   <tbody>
     <tr ng-repeat="venta in ventaVm.ventas">
-      <th scope="row">{{venta.id}}</th>
+      <th scope="row">{{venta.numeroRecibo}}</th>
       <td>{{venta.fechaVenta | date:'dd/MM/yyyy hh:mm' }}</td>
-      <td>{{venta.cantidad}}</td>
-      <td>{{venta.precio}}</td>
+      <td>{{venta.total | currency: "$ ":0}}</td>
+      <td> <a href ui-sref="auth.ventasDetalle({ numeroRecibo: venta.numeroRecibo})"> detalle </a> </td>
     </tr>
   </tbody>
   </thead>
