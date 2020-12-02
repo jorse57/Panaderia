@@ -122,28 +122,28 @@ body {
 }
 
 .menu{
-  background-color: #f2f2f2;
+  background-color: rgb(48 60 84);
+  color: white;
+  height: 100%;
 }
 
 .menu .menu-item{
-  margin-top: 20px;
-  text-align: center;
+  padding: 10px 0px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.menu .menu-item:hover{
+  background-color: white;
+  color: #222;
+  padding-left: 7px;
 }
 
 .boton-menu {
-  padding: 10px 20px;
+  padding-left: 5px;
   cursor: pointer;
-  
-}
-
-.boton-menu:hover {
-  /* border: 1px solid white; */
-  background-color: white;
-  border-radius: 20px;
 }
 
 .content-main {
   margin: 15px
 }
-
-/* .info-userlogged .user-name .user-type */

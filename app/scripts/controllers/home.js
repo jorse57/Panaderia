@@ -16,11 +16,9 @@
   function HomeCtrl(serviceServicio, $state) {
     var vm = this;
 
-
     vm.cerrarSesion = cerrarSesion;
 
     function cerrarSesion() {
-      console.log('here')
       localStorage.removeItem('token_proyecto')
       $state.go('login');
     }

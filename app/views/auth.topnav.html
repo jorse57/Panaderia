@@ -1,35 +1,43 @@
-<div class="info-userlogged col-md-2 col-xs-3">
-  <span class="user-name">{{HomeVm.user.nombre}}</span>
-  <br>
-  <span class="user-type" ng-if="HomeVm.user.rol == 1">Administrador</span>
-  <span class="user-type" ng-if="HomeVm.user.rol == 2">Empleado</span>
-  <span class="user-type" ng-if="HomeVm.user.rol == 3">Cliente</span>
-  <br>
-  <a href="" ng-click="HomeVm.cerrarSesion()">Cerrar sesión</a>
+<div class="info-userlogged" style="text-align: center; margin-top: 10px">
+  <div style="text-align: justify;">
+    <span class="user-name"><strong style="text-transform: uppercase;">{{HomeVm.user.nombre}}</strong></span>
+    <br>
+    <span class="user-type" ng-if="HomeVm.user.rol == 1">Administrador</span>
+    <span class="user-type" ng-if="HomeVm.user.rol == 2">Empleado</span>
+    <span class="user-type" ng-if="HomeVm.user.rol == 3">Cliente</span>
+    <br>
+    <a href="" ng-click="HomeVm.cerrarSesion()">Cerrar sesión</a>
+  </div>
+  <hr style="color: dimgray; margin-top: 10px;">
 </div>
-<div class="menu col-md-10 col-xs-9">
-  <div class="col-md-2 col-xs-2 menu-item">
-    <span class="boton-menu" ui-sref="auth.home">
+<div style="margin-top: 20px;">
+  <div class="menu-item" ui-sref="auth.home">
+    <span class="boton-menu">
+      <i class="glyphicon glyphicon-home"></i> 
       Inicio
     </span>
   </div>
-  <div class="col-md-2 col-xs-2 menu-item">
-    <span class="boton-menu" ui-sref="auth.usuarios">
+  <div class="menu-item" ui-sref="auth.usuarios" ng-if="HomeVm.user.rol == 1">
+    <span class="boton-menu" >
+      <i class="glyphicon glyphicon-user"></i> 
       Usuarios
     </span>
   </div>
-  <div class="col-md-2 col-xs-2 menu-item">
-    <span class="boton-menu" ui-sref="auth.productos">
+  <div class="menu-item" ui-sref="auth.productos" ng-if="HomeVm.user.rol == 1">
+    <span class="boton-menu" >
+      <i class="glyphicon glyphicon-oil"></i> 
       Productos
     </span>
   </div>
-  <div class="col-md-2 col-xs-2 menu-item">
-    <span class="boton-menu" ui-sref="auth.Compras">
+  <div class="menu-item" ui-sref="auth.Compras" ng-if="HomeVm.user.rol == 1">
+    <span class="boton-menu" >
+      <i class="glyphicon glyphicon-shopping-cart"></i> 
       Compras
     </span>
   </div>
-  <div class="col-md-2 col-xs-2 menu-item">
-    <span class="boton-menu" ui-sref="auth.Ventas">
+  <div class="menu-item" ui-sref="auth.Ventas">
+    <span class="boton-menu" >
+      <i class="glyphicon glyphicon-usd"></i> 
       Ventas
     </span>
   </div>

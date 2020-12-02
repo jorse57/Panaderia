@@ -1,5 +1,17 @@
 <h3>Productos</h3>
-<button class="btn btn-primary" ui-sref="auth.CrearActualizarProducto">Agregar nuevo</button>
+<div class="form-group col-md-10">
+  <div class="input-group">
+    <input ng-model="ventaCrVm.codBusqueda" placeholder="Buscar producto" type="text" class="form-control">
+    <div class="input-group-btn">
+      <button ng-click="ventaCrVm.busquedaProd()" class="btn" type="button"> 
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col-md-2">
+  <button class="btn btn-primary" ui-sref="auth.CrearActualizarProducto">Agregar nuevo</button>
+</div>
 <table class="table">
   <thead>
     <tr>
