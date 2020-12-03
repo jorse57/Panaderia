@@ -32,6 +32,7 @@
         serviceServicio.llamarMetodo('POST', '/sendEmailForward', parametros)
           .then(successForward);
       }
+
     }
 
     function successLogin(result){
@@ -52,6 +53,7 @@
 
     function successForward(result) {
       vm.msg = result.data
+      vm.viewForward = false;
     }
 
     vm.login = login;

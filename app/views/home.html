@@ -1,1 +1,26 @@
-<h1 style="text-transform: capitalize;">¡Bienvenido {{HomeVm.user.nombre}}!</h1>
+<div class="text-center">
+  <h1 style="text-transform: capitalize;">¡{{HomeVm.user.nombre}} Bienvenido !</h1>
+    <img src="images/home.png" width="180px">
+</div>
+
+<div ng-if="HomeVm.productos.length"> 
+  <h3 style="color: red;">Revisa las existencias de estos productos </h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Id producto</th>
+        <th>Nombre</th>
+        <th>Stock min</th>
+        <th>Existencias</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="producto in HomeVm.productos"> 
+        <td>{{producto.idProducto}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.stockMin}}</td>
+        <td>{{producto.existencias}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

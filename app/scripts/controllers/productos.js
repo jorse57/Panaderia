@@ -21,15 +21,35 @@
     vm.productos = []
     vm.page = $state.params.page
 
-    _obtenerProductos(vm.id)
+    vm.busquedaProd = busquedaProd;
+    vm.obtenerProductos = obtenerProductos;
 
-    function _obtenerProductos(id) {
+    function obtenerProductos() {
+      vm.filtroActivo = false;
+      vm.codBusqueda = null;
       serviceServicio.llamarMetodo('GET', '/producto', { page: vm.page })
         .then(_successObtenerProductos);
+    }
+
+    function busquedaProd() {
+      if (vm.codBusqueda) {
+        serviceServicio.llamarMetodo('GET', '/producto/searchIdOrName/' + vm.codBusqueda)
+          .then(_successBusquedaProd)
+      }
     }
 
     function _successObtenerProductos(result) {
       vm.productos = result.data
     }
+
+    function _successBusquedaProd(result) {
+      vm.productos = []
+      if (result.status) {
+        vm.filtroActivo = true;
+        vm.productos.push(result.data)
+      }
+    }
+
+    obtenerProductos()
   }
 })();

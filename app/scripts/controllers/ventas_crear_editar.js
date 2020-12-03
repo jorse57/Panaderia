@@ -19,10 +19,12 @@
     var vm = this;
     vm.venta = {};
     vm.fechaVenta = new Date();
+    vm.idCliente = 2;
 
     vm.id = $state.params.id
     vm.addProd = {};
     vm.productos = [];
+    vm.clientes = [];
 
     vm.guardarVenta = guardarVenta;
     vm.busquedaProd = busquedaProd;
@@ -60,7 +62,7 @@
               }
               _guardarVenta(venta)
             }
-            $state.go('auth.Ventas');
+            // $state.go('auth.Ventas');
           } else {
             vm.error = true;
             vm.message = res.message;
@@ -76,7 +78,7 @@
         cantidad: venta.cantidad,
         precio: venta.precio,
         fechaVenta: vm.fechaVenta.getTime(),
-        idCliente: vm.idUsuario,
+        idCliente: vm.idCliente * 1,
         idUsuario: vm.user.id,
       };
 
@@ -130,6 +132,11 @@
       vm.resBusProd = {};
     }
 
+    function getClientes() {
+      serviceServicio.llamarMetodo('GET', '/usuario/clientes')
+        .then(_successGetClientes);
+    }
+
 
     function _successGuardarVenta(result) {
       if (result.status) {
@@ -166,6 +173,11 @@
       })
     }
 
+    function _successGetClientes(result) {
+      if (result.status) vm.clientes = result.data.clientes
+    }
+
     quienEstaEnSesion();
+    getClientes();
   }
 })();

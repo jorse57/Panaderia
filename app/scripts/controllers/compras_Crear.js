@@ -30,6 +30,7 @@
     vm.agreProTemp = agreProTemp;
     vm.ediProTemp = ediProTemp;
     vm.eliminarProd = eliminarProd;
+    vm.canProTemp = canProTemp;
 
     function guardarCompra() {
       vm.productos
@@ -64,8 +65,19 @@
       if (vm.indexEdit) {
         vm.productos[vm.indexEdit - 1] = vm.addProd;
       } else {
-        vm.productos.push(vm.addProd)
+        let index = _buscarProductoTemporal(vm.addProd.id)
+        if (index > -1) {
+          let prodExiste = vm.productos[index];
+          prodExiste.cantidad += vm.addProd.cantidad;
+        } else {
+          vm.productos.push(vm.addProd)
+        }
       }
+      vm.addProd = {};
+      vm.resBusProd = {};
+    }
+    
+    function canProTemp() {
       vm.addProd = {};
       vm.resBusProd = {};
     }
@@ -77,7 +89,7 @@
       vm.indexEdit = index + 1;
     }
 
-    function eliminarProd(index){
+    function eliminarProd(index) {
       vm.productos.splice(index, 1)
     }
 
@@ -118,6 +130,11 @@
         vm.addProd.costo = vm.editProd.costo
       }
       delete vm.editProd;
+    }
+    function _buscarProductoTemporal(idProd){
+      return vm.productos.findIndex(function(x){
+        return x.id === idProd;
+      })
     }
   }
 })();
