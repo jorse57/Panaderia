@@ -50,6 +50,7 @@
       var params = {
         id: vm.usuario.id,
         nombre: vm.usuario.nombre,
+        tipo_identificacion : vm.usuario.tipo_identificacion,
         identificacion: vm.usuario.identificacion,
         contrasena: vm.usuario.contrasena,
         correo: vm.usuario.correo,
@@ -76,6 +77,7 @@
       var params = {
         id: vm.usuario.id,
         nombre: vm.usuario.nombre,
+        tipo_identificacion : vm.usuario.tipo_identificacion,
         identificacion: vm.usuario.identificacion,
         contrasena: vm.usuario.contrasena,
         correo: vm.usuario.correo,

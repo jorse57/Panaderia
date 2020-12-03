@@ -10,7 +10,7 @@
             ng-model="usuarioPassVm.passV" required>
     </div>
 
-    {{usuarioForm.$invalid || usuarioPassVm.pass != usuarioPassVm.passV}}
+    <!-- {{usuarioForm.$invalid || usuarioPassVm.pass != usuarioPassVm.passV}} -->
     <div class="col-md-12">
         <button type="submit" ng-disabled="usuarioForm.$invalid || usuarioPassVm.pass != usuarioPassVm.passV" class="btn btn-primary btn-block">Guardar</button>
     </div>

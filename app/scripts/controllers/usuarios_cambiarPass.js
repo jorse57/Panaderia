@@ -24,12 +24,15 @@
             }
             serviceServicio.llamarMetodo('POST','/cambiarPass', params)
                 .then(successGuardarNewPass)
+                $state.go('auth.usuarios');
         }
+
 
         function successGuardarNewPass(result){
             console.log(result);
         }
 
         vm.guardarNewPass= guardarNewPass;
+        
     }
 })();

@@ -83,7 +83,8 @@ body {
 }
 
 .login {
-  width: 400px;
+  width: 350px;
+  padding: 0px 10px;
 }
 
 .center-screen {
@@ -146,4 +147,32 @@ body {
 
 .content-main {
   margin: 15px
+}
+.sidenav {
+  height: 100%;
+  background-color: rgb(48 60 84);;
+  overflow-x: hidden;
+  padding-top: 20px;
+}
+.login-main-text{
+  margin-top: 20%;
+  padding: 60px;
+  color: #fff;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+}
+
+@media screen and (min-width: 768px){
+  .main{
+      margin-left: 40%; 
+  }
+
+  .sidenav{
+      width: 30%;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      left: 0;
+  }
 }
