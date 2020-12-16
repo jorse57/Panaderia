@@ -21,8 +21,10 @@
     vm.id = $state.params.id
 
     vm.guardar = guardar;
+    vm.tituloVista = 'Crear'
 
     if (vm.id) {
+      vm.tituloVista = 'Actualizar'
       _obtenerProducto(vm.id);
     }
 

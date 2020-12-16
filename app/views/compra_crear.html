@@ -1,32 +1,32 @@
 <h3 style="text-align: center">Compra de productos</h3>
 
 <form name="compraForm" ng-submit="compraCrVm.guardarCompra()">
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-4" ng-class="{'has-error': compraForm.nit.$invalid, 'has-success': compraForm.nit.$valid}">
     <label for="nombre">Nit</label>
-    <input type="text" class="form-control" id="nombre" ng-minlength="4" ng-model="compraCrVm.nitProveedor" required>
+    <input type="text" name="nit"class="form-control" id="nombre" ng-minlength="4" ng-model="compraCrVm.nitProveedor" required>
   </div>
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-4" ng-class="{'has-error': compraForm.nombreProv.$invalid, 'has-success': compraForm.nombreProv.$valid}">
     <label for="id">nombre proveedor</label>
-    <input type="text" class="form-control" id="id" ng-minlength="4" ng-model="compraCrVm.nombreProveedor">
+    <input type="text" name="nombreProv"class="form-control" id="id" ng-minlength="4" ng-model="compraCrVm.nombreProveedor" required>
   </div>
-  <div class="form-group col-md-4" >
+  <div class="form-group col-md-4" ng-class="{'has-error': compraForm.numeroRec.$invalid, 'has-success': compraForm.numeroRec.$valid}">
     <label for="recibo">n° recibo</label>
-    <input type="text" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.numeroRecibo">
+    <input type="text" name="numeroRec"class="form-control" id="exampleFormControlInput1" ng-minlength="4" ng-model="compraCrVm.numeroRecibo" required>
   </div>
 
-  <div class="form-group col-md-4" >
+  <div class="form-group col-md-4" ng-class="{'has-error': compraForm.fechaCom.$invalid, 'has-success': compraForm.fechaCom.$valid}">
     <label for="compra">fecha compra</label>
-    <input type="date" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.fechaCompra">
+    <input type="date" name="fechaCom"class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.fechaCompra"required>
   </div>
-  <div class="form-group col-md-4" >
+  <div class="form-group col-md-4" ng-class="{'has-error': compraForm.fechaEnt.$invalid, 'has-success': compraForm.fechaEnt.$valid}">
     <label for="entrega">fecha entrega</label>
-    <input type="date" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.fechaEntregaP">
+    <input type="date" name="fechaEnt" class="form-control" id="exampleFormControlInput1" ng-model="compraCrVm.fechaEntregaP"required>
   </div>
 
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-4" ng-class="{'has-error': compraForm.buscar.$invalid, 'has-success': compraForm.buscar.$valid}">
     <div class="input-group">
       <label for="entrega">Buscar producto</label>
-      <input ng-model="compraCrVm.codBusqueda" placeholder="Producto" type="text" class="form-control">
+      <input ng-model="compraCrVm.codBusqueda"  name="buscar"placeholder="Producto" type="text" class="form-control" >
       <div class="input-group-btn" style="top: 13px;">
         <button ng-click="compraCrVm.busquedaProd()" class="btn" type="button"> 
           <i class="glyphicon glyphicon-search"></i>
@@ -114,6 +114,6 @@
   </div>
 
   <div class="col-md-12">
-    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+    <button type="submit" ng-disabled="compraForm.$invalid" class="btn btn-primary btn-block">Guardar</button>
   </div>  
 </form>

@@ -32,6 +32,7 @@
     }
 
     function busquedaProd() {
+      console.log("parametro busqueda", vm.codBusqueda);
       if (vm.codBusqueda) {
         serviceServicio.llamarMetodo('GET', '/producto/searchIdOrName/' + vm.codBusqueda)
           .then(_successBusquedaProd)

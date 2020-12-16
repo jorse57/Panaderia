@@ -4,7 +4,7 @@
 <form name="usuarioForm" ng-submit="usuarioCrAcVm.guardar()">
   <div class="form-group col-md-4" ng-class="{'has-error': usuarioForm.nombre.$invalid, 'has-success': usuarioForm.nombre.$valid}" >
     <label class="control-label" for="nombre">Nombre</label>
-    <input type="text" class="form-control" id="nombre" name="nombre" ng-minlength="4" ng-model="usuarioCrAcVm.usuario.nombre" required>
+    <input type="text" class="form-control" id="nombre" name="nombre"  ng-minlength="4" ng-model="usuarioCrAcVm.usuario.nombre" required>
   </div>
   <div class="form-group col-md-4" ng-model="usuarioCrAcVm.usuario.tipo_identificacion">
     <label for="exampleFormControlSelect1" name="tipo_identificacion">Tipo de documento</label>
@@ -20,15 +20,15 @@
   </div>
   <div class="form-group col-md-4" ng-class="{'has-error': usuarioForm.correo.$invalid, 'has-success': usuarioForm.correo.$valid}">
     <label for="correo" name="correo">Correo</label>
-    <input type="email" class="form-control" id="correo" ng-model="usuarioCrAcVm.usuario.correo" required>
+    <input type="email" class="form-control" id="correo" ng-model="usuarioCrAcVm.usuario.correo" name="correo" required>
   </div>
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-4"ng-class="{'has-error': usuarioForm.telefono.$invalid, 'has-success': usuarioForm.telefono.$valid}">
     <label for="telefono">Teléfono</label>
-    <input type="text" class="form-control" id="telefono" ng-model="usuarioCrAcVm.usuario.telefono" required>
+    <input type="number" class="form-control" id="telefono" ng-model="usuarioCrAcVm.usuario.telefono" name="telefono" required>
   </div>
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-4" ng-class="{'has-error': usuarioForm.direccion.$invalid, 'has-success': usuarioForm.direccion.$valid}">
     <label for="dir">Dirección</label>
-    <input type="text" class="form-control" id="dir" ng-model="usuarioCrAcVm.usuario.direccion" required>
+    <input type="text" class="form-control" id="dir" ng-model="usuarioCrAcVm.usuario.direccion" name="direccion" required>
   </div>
   <div class="form-group col-md-4" ng-model="usuarioCrAcVm.usuario.rol">
     <label for="exampleFormControlSelect1" name="rol">Rol</label>
@@ -40,14 +40,14 @@
   </div>
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1">Estado</label>
-    <select class="form-control" id="exampleFormControlSelect1" ng-model="usuarioCrAcVm.usuario.estado">
+    <select class="form-control" id="exampleFormControlSelect1" ng-model="usuarioCrAcVm.usuario.estado" required>
       <option ng-selected="usuarioCrAcVm.usuario.estado == 0" value="0">Inactivo</option>
       <option ng-selected="usuarioCrAcVm.usuario.estado == 1" value="1">Activo</option>
     </select>
   </div>
-  <div class="form-group col-md-4" ng-if="!usuarioCrAcVm.usuario.id">
+  <div class="form-group col-md-4" ng-if="!usuarioCrAcVm.usuario.id" ng-class="{'has-error': usuarioForm.pass.$invalid, 'has-success': usuarioForm.pass.$valid}">
     <label for="pass">Contraseña</label>
-    <input type="password" class="form-control" id="exampleFormControlInput1" ng-model="usuarioCrAcVm.usuario.contrasena" required>
+    <input type="password" class="form-control"  ng-minlength="6" id="exampleFormControlInput1"  ng-model="usuarioCrAcVm.usuario.contrasena" name="pass"required>
   </div>
 
   <div class="form-group col-md-12 center" ng-if="usuarioCrAcVm.error">

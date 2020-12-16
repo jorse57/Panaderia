@@ -1,21 +1,22 @@
-crear actualizar
-
-<form ng-submit="productoCrAcVm.guardar()">
-  <div class="form-group col-md-6">
-    <label for="exampleFormControlInput1">Nombre</label>
-    <input type="text" class="form-control" ng-model="productoCrAcVm.producto.nombre">
+<h3>
+  {{productoCrAcVm.tituloVista}} producto
+</h3>
+<form name="productoForm" ng-submit="productoCrAcVm.guardar()">
+  <div class="form-group col-md-6" ng-class="{'has-error': productoForm.nombre.$invalid, 'has-success': productoForm.nombre.$valid}">
+    <label for="exampleFormControlInput1" >Nombre</label>
+    <input type="text" class="form-control" ng-minlength="3"name="nombre" ng-model="productoCrAcVm.producto.nombre" required>
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-6" ng-class="{'has-error': productoForm.existencias.$invalid, 'has-success': productoForm.existencias.$valid}"> 
     <label for="exampleFormControlInput1">Existencias</label>
-    <input type="number" class="form-control" ng-disabled="productoCrAcVm.producto.id" ng-model="productoCrAcVm.producto.existencias">
+    <input type="number" class="form-control"  name="existencias" ng-disabled="productoCrAcVm.producto.id" ng-model="productoCrAcVm.producto.existencias" required>
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-6"  ng-class="{'has-error': productoForm.precio.$invalid, 'has-success': productoForm.precio.$valid}" >
     <label for="exampleFormControlInput1">Precio de venta</label>
-    <input type="number" class="form-control" ng-model="productoCrAcVm.producto.precioVenta">
+    <input type="number" class="form-control" ng-minlength="3" name="precio" ng-model="productoCrAcVm.producto.precioVenta" required>
   </div>
   <div class="form-group col-md-6">
     <label for="exampleFormControlSelect1">Tipo de producto</label>
-    <select class="form-control" id="exampleFormControlSelect1" ng-model="productoCrAcVm.producto.tipoProducto">
+    <select class="form-control" id="exampleFormControlSelect1" ng-model="productoCrAcVm.producto.tipoProducto" required>
       <option ng-selected="productoCrAcVm.producto.tipoProducto == 1" value="1">Parva</option>
       <option ng-selected="productoCrAcVm.producto.tipoProducto == 2" value="2">Aseo</option>
       <option ng-selected="productoCrAcVm.producto.tipoProducto == 3" value="3">Grano</option>
@@ -23,37 +24,39 @@ crear actualizar
   </div>
   <div class="form-group col-md-6">
     <label for="exampleFormControlSelect1">Estado</label>
-    <select class="form-control" id="exampleFormControlSelect1" ng-model="productoCrAcVm.producto.estado">
+    <select class="form-control" id="exampleFormControlSelect1" ng-model="productoCrAcVm.producto.estado" required>
       <option ng-selected="productoCrAcVm.producto.estado == 0" value="0">Inactivo</option>
       <option ng-selected="productoCrAcVm.producto.estado == 1" value="1">Activo</option>
     </select>
   </div>
   <div class="form-group col-md-6">
     <label for="exampleFormControlSelect1">Unidad de medida</label>
-    <select class="form-control" id="exampleFormControlSelect1" ng-model="productoCrAcVm.producto.unidadMedida">
-      <option ng-selected="productoCrAcVm.producto.unidadMedida == 0" value="0">unidad 1</option>
-      <option ng-selected="productoCrAcVm.producto.unidadMedida == 1" value="1">unidad 2</option>
+    <select class="form-control" id="exampleFormControlSelect1" ng-model="productoCrAcVm.producto.unidadMedida" required>
+      <option ng-selected="productoCrAcVm.producto.unidadMedida == 0" value="0">Gramos</option>
+      <option ng-selected="productoCrAcVm.producto.unidadMedida == 1" value="1">Kilogramos</option>
+      <option ng-selected="productoCrAcVm.producto.unidadMedida == 2" value="2">Litros</option>
+      <option ng-selected="productoCrAcVm.producto.unidadMedida == 3" value="3">Mililitros</option>
     </select>
   </div>
   
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-6" ng-class="{'has-error': productoForm.stockMin.$invalid, 'has-success': productoForm.stockMin.$valid}">
     <label for="exampleFormControlInput1">Stock minimo</label>
-    <input type="number" class="form-control" ng-model="productoCrAcVm.producto.stockMin">
+    <input type="number" name="stockMin" class="form-control" ng-model="productoCrAcVm.producto.stockMin" required>
   </div>
 
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-6" ng-class="{'has-error': productoForm.stockMax.$invalid, 'has-success': productoForm.stockMax.$valid}">
     <label for="exampleFormControlInput1">Stock maximo</label>
-    <input type="number" class="form-control" ng-model="productoCrAcVm.producto.stockMax">
+    <input type="number" name="stockMax"class="form-control" ng-model="productoCrAcVm.producto.stockMax" required>
   </div>
 
-  <div class="form-group col-md-6">
+  <div class="form-group col-md-6" ng-class="{'has-error': productoForm.fechaCad.$invalid, 'has-success': productoForm.fechaCad.$valid}">
     <label for="datetimepicker1">Fecha de caducidad</label>
     <div class='input-group col-md-12' id='datetimepicker1'>
-      <input type='date' class="form-control" ng-model="productoCrAcVm.producto.fechaCaducidad" />
+      <input type='date' name="fechaCad"class="form-control" ng-model="productoCrAcVm.producto.fechaCaducidad" required />
     </div>
   </div>
 
   <div class="col-md-12">
-    <button type="submit" class="btn btn-primary btn-block">Guardar</button>
+    <button type="submit" ng-disabled="productoForm.$invalid" class="btn btn-primary btn-block">Guardar</button>
   </div>
 </form>

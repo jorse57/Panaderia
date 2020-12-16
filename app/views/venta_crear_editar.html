@@ -7,19 +7,19 @@
       ng-model="ventaCrVm.fechaVenta">
   </div>
 
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-4" ng-class="{'has-error': ventaForm.cliente.$invalid, 'has-success': ventaForm.cliente.$valid}">
     <label for="nombre">cliente</label>
     <!-- <input type="text" class="form-control" id="nombre" ng-minlength="4" ng-model="ventaCrVm.idCliente" required> -->
-    <select class="form-control" id="exampleFormControlSelect1" ng-model="ventaCrVm.idCliente" required>
+    <select class="form-control" name="cliente" id="exampleFormControlSelect1" ng-model="ventaCrVm.idCliente" required>
       <option  ng-repeat="cliente in ventaCrVm.clientes"  ng-value="cliente.id">{{cliente.nombre}}</option>
     </select>
   
   </div>
 
-  <div class="form-group col-md-4">
+  <div class="form-group col-md-4" ng-class="{'has-error': ventaForm.buscar.$invalid, 'has-success': ventaForm.buscar.$valid}">
     <div class="input-group">
       <label for="entrega">Buscar producto</label>
-      <input ng-model="ventaCrVm.codBusqueda" placeholder="Producto" type="text" class="form-control">
+      <input ng-model="ventaCrVm.codBusqueda" name="buscar"placeholder="Producto" type="text" class="form-control" >
       <div class="input-group-btn" style="top: 13px;">
         <button ng-click="ventaCrVm.busquedaProd()" class="btn" type="button">
           <i class="glyphicon glyphicon-search"></i>

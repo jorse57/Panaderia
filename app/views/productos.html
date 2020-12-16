@@ -1,4 +1,5 @@
 <h3>Productos</h3>
+
 <div class="form-group col-md-8">
   <div class="input-group">
     <input ng-model="productosVm.codBusqueda" placeholder="Buscar producto" type="text" class="form-control">
@@ -34,7 +35,7 @@
         <span ng-if="producto.estado == 0">Inactivo</span>
         <span ng-if="producto.estado == 1">Activo</span>
       </td>
-      <td> <a href="" ui-sref="auth.CrearActualizarProducto({id: producto.id})">editar</a> </td>
+      <td> <a href="" ui-sref="auth.CrearActualizarProducto({id: producto.id})" class="glyphicon glyphicon-pencil"></a> </td>
     </tr>
   </tbody>
 </table>

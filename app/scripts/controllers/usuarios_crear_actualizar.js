@@ -12,7 +12,7 @@
 
   usuarioCrAcCtrl.$inject = [
     '$state',
-    'serviceServicio'
+    'serviceServicio',
   ];
 
   function usuarioCrAcCtrl($state, serviceServicio) {
@@ -20,6 +20,7 @@
     var vm = this;
     vm.usuario = {}
     vm.id = $state.params.id
+    
 
     vm.guardar = guardar;
     vm.tituloVista = 'Crear'

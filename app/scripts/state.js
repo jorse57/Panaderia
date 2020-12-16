@@ -99,7 +99,7 @@
       })
 
       .state('auth.Ventas', {
-        url: '/ventas',
+        url: '/ventas:page',
         templateUrl: 'views/ventas.html',
         controller: 'ventasCtrl as ventaVm'
       })
