@@ -1,4 +1,17 @@
 <h3>Usuarios</h3>
+<div class="form-group col-md-8">
+  <div class="input-group">
+    <input ng-model="usuarioVm.numeroRecibo" placeholder="Buscar usuario con identificacion" type="number" class="form-control">
+    <div class="input-group-btn">
+      <button ng-click="usuarioVm.busquedaUsuario()" class="btn" type="button"> 
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col-md-2" ng-if="usuarioVm.filtroActivo">
+  <button class="btn btn-info" ng-click="usuarioVm._obtenerUsario()">Limpiar Filtro</button>
+</div>
 <button class="btn btn-primary" ui-sref="auth.CrearActualizarUsuarios">Agregar nuevo</button>
 <table class="table">
   <thead>

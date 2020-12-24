@@ -21,15 +21,35 @@
     vm.usuarios = []
     vm.page = $state.params.page
 
-    _obtenerUsario(vm.id)
+    vm.id = $state.params.id
+    vm.obtenerUsario = _obtenerUsario;
+    vm.busquedaUsuario = busquedaUsuario;
 
     function _obtenerUsario(id) {
+      vm.filtroActivo = false;
+      vm.numeroRecibo = null;
       serviceServicio.llamarMetodo('GET', '/usuario', { page: vm.page })
         .then(_successObtenerUsuario);
+    }
+    function busquedaUsuario() {
+      if (vm.numeroRecibo) {
+        serviceServicio.llamarMetodo('GET', '/usuario/search/' + vm.numeroRecibo)
+          .then(_successBusquedaUsuario)
+      }
     }
 
     function _successObtenerUsuario(result) {
       vm.usuarios = result.data
     }
+
+
+    function _successBusquedaUsuario(result) {
+      vm.usuarios = []
+      if (result.status) {
+        vm.filtroActivo = true;
+        vm.usuarios.push(result.data)
+      }
+    }
+    _obtenerUsario()
   }
 })();

@@ -1,4 +1,17 @@
 <h3>Compras</h3>
+<div class="form-group col-md-8">
+  <div class="input-group">
+    <input ng-model="compraVm.numeroRecibo" placeholder="Buscar compra con numero recibo" type="number" class="form-control">
+    <div class="input-group-btn">
+      <button ng-click="compraVm.busquedaCompra()" class="btn" type="button"> 
+        <i class="glyphicon glyphicon-search"></i>
+      </button>
+    </div>
+  </div>
+</div>
+<div class="col-md-2" ng-if="compraVm.filtroActivo">
+  <button class="btn btn-info" ng-click="compraVm._obtenerCompra()">Limpiar Filtro</button>
+</div>
 <button class="btn btn-primary" ui-sref="auth.comprasCrear">Agregar nueva compra</button>
 <table class="table">
   <thead>
