@@ -88,7 +88,7 @@
     
     function busquedaProd() {
       if (vm.codBusqueda) {
-        serviceServicio.llamarMetodo('GET', '/producto/searchIdOrName/' + vm.codBusqueda)
+        serviceServicio.llamarMetodo('GET', '/producto/getByidOrByNameVenta/' + vm.codBusqueda)
           .then(_successBusquedaProd)
       }
     }

@@ -22,8 +22,6 @@
     vm.page = $state.params.page
 
     vm.id = $state.params.id
-    vm.obtenerUsario = _obtenerUsario;
-    vm.busquedaUsuario = busquedaUsuario;
 
     function _obtenerUsario(id) {
       vm.filtroActivo = false;
@@ -31,7 +29,9 @@
       serviceServicio.llamarMetodo('GET', '/usuario', { page: vm.page })
         .then(_successObtenerUsuario);
     }
+
     function busquedaUsuario() {
+      console.log(vm.numeroRecibo);
       if (vm.numeroRecibo) {
         serviceServicio.llamarMetodo('GET', '/usuario/search/' + vm.numeroRecibo)
           .then(_successBusquedaUsuario)
@@ -51,5 +51,8 @@
       }
     }
     _obtenerUsario()
+
+    vm.obtenerUsario = _obtenerUsario;
+    vm.busquedaUsuario = busquedaUsuario;
   }
 })();

@@ -45,7 +45,7 @@
       <option ng-selected="usuarioCrAcVm.usuario.estado == 1" value="1">Activo</option>
     </select>
   </div>
-  <div class="form-group col-md-4" ng-if="!usuarioCrAcVm.usuario.id" ng-class="{'has-error': usuarioForm.pass.$invalid, 'has-success': usuarioForm.pass.$valid}">
+  <div class="form-group col-md-4" ng-if="!usuarioCrAcVm.usuario.id && usuarioCrAcVm.usuario.rol != 3 " ng-class="{'has-error': usuarioForm.pass.$invalid, 'has-success': usuarioForm.pass.$valid}">
     <label for="pass">Contraseña</label>
     <input type="password" class="form-control"  ng-minlength="6" id="exampleFormControlInput1"  ng-model="usuarioCrAcVm.usuario.contrasena" name="pass"required>
   </div>

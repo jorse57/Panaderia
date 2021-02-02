@@ -1,6 +1,6 @@
 (function () {
   'use strict';
- 
+
   /**
    * @ngdoc function
    * @name proyectoFrontApp.controller:loginCtrl
@@ -30,12 +30,14 @@
           correo: vm.correo
         };
         serviceServicio.llamarMetodo('POST', '/sendEmailForward', parametros)
-          .then(successForward);
+          .then(successForward, function (err) {
+            console.log(error);
+          });
       }
 
     }
 
-    function successLogin(result){
+    function successLogin(result) {
       if (result.status) {
         localStorage.setItem("token_proyecto", result.data.accessToken);
         $state.go("auth.home");
@@ -47,13 +49,19 @@
 
     function errorLogin(error) {
       vm.error = true;
-      console.log("------->",error);
-      
+      vm.message = error.message;
+      console.log("------->", error);
     }
 
     function successForward(result) {
-      vm.msg = result.data
-      vm.viewForward = false;
+      if (result.message == 'Correo enviado') {
+        vm.error = false;
+        vm.msg = result.message;
+        vm.viewForward = false;
+      } else {
+        vm.error = true;
+        vm.message = result.message
+      }
     }
 
     vm.login = login;
