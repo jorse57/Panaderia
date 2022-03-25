@@ -1,12 +1,12 @@
 # proyecto-front
+Proyecto-Front Panaderia "El Mono" desarrollado en AngularJs
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.14.0.
 
-## Build & development
+## Construcción y desarrollo
 
-Run `grunt` for building and `grunt serve` for preview.
+Instalar dependencias y ejecutar `grunt` para construir y `grunt serve` para obtener una vista previa.
 
 ## Testing
 
-Running `grunt test` will run the unit tests with karma.
+
+Ejecutar `grunt test` ejecutará las pruebas unitarias con karma.
